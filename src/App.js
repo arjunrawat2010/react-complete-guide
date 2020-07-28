@@ -2,14 +2,32 @@ import React, { Component } from 'react';
 import './App.css';
 import Person from "./Person/Person"
 class App extends Component {
+  state={
+    persons:[
+      {"name":"Arjun",age:23},
+      {"name":"Vikas",age:24},
+      {"name":"Ramji",age:25}
+    ],
+    otherState:"other state"
+  }
+  switchNameHandler=()=>{
+    this.setState({
+      persons:[
+        {"name":"Arjun Singh",age:23},
+        {"name":"Vikas",age:24},
+        {"name":"Ramji",age:22}
+      ]
+    })
+  }
   render() {
     return (
       <div className="App">
         <h1>Hello I am react developer</h1>
         <p>This isreally working</p>
-        <Person name="arjun" age="30" />
-        <Person name="vikas" age="32" > His hobey is</Person>
-        <Person name="ramji" age="25" />
+        <button onClick={this.switchNameHandler}>Switch Name</button>
+        <Person name={this.state.persons[0].name} age={this.state.persons[0].age} />
+        <Person name={this.state.persons[1].name} age={this.state.persons[1].age} > His hobey is cricket</Person>
+        <Person name={this.state.persons[2].name} age={this.state.persons[0].age} />
       </div>
     );
 
